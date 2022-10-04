@@ -1,4 +1,4 @@
-import "./Image.css";
+import css from "./Image.module.css";
 
 interface Constituent {
   constituentID: number;
@@ -21,10 +21,10 @@ interface Props {
 
 const Image = ({ data }: Props) => {
   return (
-    <div className="container">
-      <img className="image" src={data.primaryImage} alt={data.creditLine} />
-      <h2 className="title">{data.title}</h2>
-      <h3 className="artist">Artist: {data.artistDisplayName}</h3>
+    <div className={css.container}>
+      <img className={css.image} src={data.primaryImage} alt={data.creditLine} />
+      <h2 className={css.title}>{data.title}</h2>
+      <h3 className={css.artist}>Artist: {data.artistDisplayName}</h3>
     </div>
   )
 };
