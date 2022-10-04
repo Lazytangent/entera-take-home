@@ -11,6 +11,7 @@ export interface ImageData {
   constituents: Constituent[];
   creditLine: string;
   objectID: number;
+  objectURL: string;
   primaryImage: string;
   title: string;
 }
@@ -22,7 +23,9 @@ interface Props {
 const Image = ({ data }: Props) => {
   return (
     <div className={css.container}>
-      <img className={css.image} src={data.primaryImage} alt={data.creditLine} />
+      <a href={data.objectURL} className={css.link}>
+        <img className={css.image} src={data.primaryImage} alt={data.creditLine} />
+      </a>
       <h2 className={css.title}>{data.title}</h2>
       <h3 className={css.artist}>Artist: {data.artistDisplayName}</h3>
     </div>
