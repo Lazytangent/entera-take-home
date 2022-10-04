@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+
+import Image, { ImageData } from './Image';
+import Loading from './Loading';
+
+const URL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/436121";
+
+const dataFetcher = async () => {
+  const res = await fetch(URL);
+  const body = await res.json();
+  return body;
+};
 
 function App() {
+  const [data, setData] = useState<undefined | ImageData>();
+
+  useEffect(() => {
+    dataFetcher().then((body) => setData(body));
+    /* setData({} as ImageData); */
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {data ? <Image data={data} /> : <Loading />}
+    </>
   );
 }
 
