@@ -1,3 +1,5 @@
+import "./Image.css";
+
 interface Constituent {
   constituentID: number;
   name: string;
@@ -22,7 +24,7 @@ const Image = ({ data }: Props) => {
     <div className="container">
       <img className="image" src={data.primaryImage} alt={data.creditLine} />
       <h2 className="title">{data.title}</h2>
-      <h3 className="artist">{data.artistDisplayName}</h3>
+      <h3 className="artist">Artist: {data.artistDisplayName}</h3>
     </div>
   )
 };
