@@ -16,7 +16,6 @@ function App() {
 
   useEffect(() => {
     dataFetcher().then((body) => setData(body));
-    /* setData({} as ImageData); */
   }, []);
 
   return (
